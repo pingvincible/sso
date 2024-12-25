@@ -100,6 +100,8 @@ func (a *Auth) Login(
 
 	app, err := a.appProvider.App(ctx, appID)
 	if err != nil {
+		a.log.Error("app does not exist", err.Error())
+
 		return "", fmt.Errorf("%s: %w", op, err)
 	}
 
